@@ -1,0 +1,36 @@
+name: Flask Chatbot CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📦 Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: 📥 Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flask torch transformers
+
+    - name: 🚀 Run Flask App in Background
+      run: |
+        nohup python chat_api.py &
+        sleep 10
+
+    - name: ✅ Test Chat Endpoint
+      run: |
+        curl -X POST http://127.0.0.1:5000/chat \
+        -H "Content-Type: application/json" \
+        -d '{"message":"Hello"}'
