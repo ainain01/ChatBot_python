@@ -1,10 +1,4 @@
 # ChatBot_python
-Here's a professional and clear `README.md` file for your chatbot project using Hugging Face's DialoGPT with both **online** and **offline** options:
-
----
-
-### ✅ `README.md`
-
 # 🧠 DialoGPT Chatbot (Online + Offline Mode)
 
 This is a Flask-based chatbot interface powered by Microsoft's [DialoGPT](https://huggingface.co/microsoft/DialoGPT-medium) for generating conversational responses. It supports both **online model loading from Hugging Face** and **offline usage** from a locally cached model.
